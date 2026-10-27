@@ -32,7 +32,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeScreen(
     onScanClick: () -> Unit,
-    onHistoryClick: () -> Unit
+    onHistoryClick: () -> Unit,
+    onGeneratorClick: () -> Unit
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
@@ -138,13 +139,7 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 OutlinedButton(
-                    onClick = {
-                        scope.launch {
-                            snackbarHostState.showSnackbar(
-                                "QR generation will be added in a later phase."
-                            )
-                        }
-                    },
+                    onClick = onGeneratorClick,
                     modifier = Modifier
                         .weight(1f)
                         .height(64.dp),

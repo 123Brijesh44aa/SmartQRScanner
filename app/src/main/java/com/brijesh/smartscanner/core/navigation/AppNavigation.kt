@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.brijesh.smartscanner.data.repository.ScanHistoryRepository
 import com.brijesh.smartscanner.data.repository.ScanHistoryViewModel
 import com.brijesh.smartscanner.data.repository.ScanHistoryViewModelFactory
+import com.brijesh.smartscanner.feature.generator.GeneratorScreen
 import com.brijesh.smartscanner.feature.history.HistoryScreen
 import com.brijesh.smartscanner.feature.home.HomeScreen
 import com.brijesh.smartscanner.feature.result.ScanContentType
@@ -49,6 +50,9 @@ fun AppNavigation(
                 },
                 onHistoryClick = {
                     navController.navigate(Screen.HISTORY)
+                },
+                onGeneratorClick = {
+                    navController.navigate(Screen.GENERATOR)
                 }
             )
         }
@@ -94,6 +98,14 @@ fun AppNavigation(
                 onOpenScan = { value ->
                     scannedValue = value
                     navController.navigate(Screen.SCAN_RESULT)
+                }
+            )
+        }
+
+        composable(Screen.GENERATOR) {
+            GeneratorScreen(
+                onBack = {
+                    navController.popBackStack()
                 }
             )
         }
